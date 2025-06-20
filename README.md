@@ -1,16 +1,22 @@
-# bloc_random_eka
+## Praktikum 7 : BLoC Pattern
 
-A new Flutter project.
+### Soal 13
 
-## Getting Started
+![image alt](images/Soal13.gif)
 
-This project is a starting point for a Flutter application.
+Pada Praktikum 7 ini, merupakan contoh penerapan pola arsitektur BLoC (Business Logic Component) secara sederhana, di mana angka acak dihasilkan setiap kali tombol ditekan.
 
-A few resources to get you started if this is your first Flutter project:
+Antarmuka pengguna (UI) tidak menangani proses pembuatan angka, melainkan hanya menampilkan data yang dikirim oleh state melalui stream. Dengan demikian, logika aplikasi dipisahkan dari tampilan — sesuai dengan prinsip dasar BLoC.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Terdapat 3 bagian pada letak konsep pola BLoC, berikut codenya :
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+Event (aksi dari pengguna)
+→ Pemicu aksi: generateRandom.add(null) saat tombol ditekan.
+
+Business Logic (proses di balik layar)
+→ Menjalankan logika: Random().nextInt(10) untuk menghasilkan angka acak.
+
+State (hasil yang ditampilkan ke pengguna)
+→ UI menampilkan hasil: StreamBuilder<int> merender snapshot.data ke layar.
+```
